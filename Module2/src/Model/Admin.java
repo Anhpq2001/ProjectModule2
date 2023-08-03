@@ -1,6 +1,6 @@
 package Model;
 
-public class Admin {
+public class Admin{
     private String adminEmail = "admin@fpt.edu.vn";
     private String adminPasswork = "1234567890";
 
@@ -10,5 +10,13 @@ public class Admin {
 
     public String getAdminPasswork() {
         return adminPasswork;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Admin{" +
+                "adminEmail='" + adminEmail + '\'' +
+                ", adminPasswork='" + adminPasswork + '\'' +
+                '}';
     }
 }
