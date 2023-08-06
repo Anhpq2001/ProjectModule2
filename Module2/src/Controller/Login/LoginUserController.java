@@ -10,11 +10,15 @@ public class LoginUserController {
 
     // function to manage login
     public void loginManage(){
-        System.out.println("-----Login System Student Manage-----");
-        System.out.println("Input your email:");
-        String email = scanner.nextLine();
-        System.out.println("Input your password:");
-        String password = scanner.nextLine();
-        manage.homeMenu(email, password);
+        int loginTime = 1;
+        do {
+            System.out.println("-----Login System Student Manage-----");
+            System.out.println("Input your email:");
+            String email = scanner.nextLine();
+            System.out.println("Input your password:");
+            String password = scanner.nextLine();
+            manage.homeMenu(email, password);
+            loginTime++;
+        }while(loginTime <= 3);
     }
 }

@@ -38,6 +38,7 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
             System.out.println("4. Take point for class");
             System.out.println("5. Input student code to manager student");
             System.out.println("Other to back");
+            System.out.println("Input your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -45,7 +46,7 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
                     displayItem(students);
                     System.out.println("");
                     groups = manageGroupController.read("src/IO/Group");
-                    displayGroup(groups);
+                    manageGroupController.displayItem(groups);
                     System.out.println("");
                     groupAttendances = manageGroupController.readGroupAttendance("src/IO/GroupAttendance");
                     displayGroupAttendamce(groupAttendances);
@@ -90,6 +91,7 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
             System.out.println("3. Remove student don't study in campus");
             System.out.println("4. Update information student in campus");
             System.out.println("Other to back");
+            System.out.println("Input your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -102,6 +104,13 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
                     manageGroupController.write(groupPoints,"src/IO/GroupPoint");
                     break;
                 case 2:
+                    groupAttendances = manageGroupController.readGroupAttendance("src/IO/GroupAttendance");
+                    groupPoints = manageGroupController.readGroupPoint("src/IO/GroupPoint");
+                    groups = manageGroupController.read("src/IO/Group");
+                    manageGroupController.removeItem(check);
+                    manageGroupController.write(groups,"src/IO/Group");
+                    manageGroupController.write(groupAttendances, "src/IO/GroupAttendance");
+                    manageGroupController.write(groupPoints,"src/IO/GroupPoint");
                     break;
                 case 3:
                     students = read("src/IO/Student");
@@ -241,8 +250,6 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
 
     @Override
     public void updateItem(String index) {
-        // chi thuc hien update chu khong kiem tra code student
-        String check;
         Student updateObject = getStudent(index);
         updateObject.setStudentAge(CheckInputValue.checkInt("Age:", 17, 28));
         updateObject.setStudentPhone(CheckInputValue.checkString("Phone:"));
@@ -261,7 +268,6 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
 
     @Override
     public String findItemID() {
-        // kiem tra ma codestudent de thuc hien cac chuc nang them
         String code = CheckInputValue.checkString("Enter student code to more choice option:");
         String result = "";
         for (Student s : students) {
@@ -302,13 +308,6 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
 
     }*/
 
-    public void displayGroup(List<Group> groups){
-        System.out.println("--Detail Information Group--");
-        System.out.printf("%-15s%-20s%-25s%-20s%-15s\n", "Group", "Student Code", "Student Name", "Subject Code", "Total Slot");
-        for(Group g: groups){
-            System.out.println(g);
-        }
-    }
     public void displayGroupAttendamce(List<GroupAttendance> groupAttendances){
         System.out.println("--Detail Information Group Attendance--");
         System.out.printf("%-15s%-20s%-20s%-25s%-20s%-15s\n", "Group", "Subject Code","Student Code", "Student Name", "Status Attendance", "Slot");
