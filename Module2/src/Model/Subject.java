@@ -1,25 +1,20 @@
 package Model;
 
-public class Subject {
+import java.io.Serializable;
+
+public class Subject implements Serializable {
+    private static final long serialVersionUID = 1l;
     private String subjectCode;
     private String subjectName;
-    private Double progressTest1;
-    private Double progressTest2;
-    private Double projectSubject;
-    private boolean status;
-    private Student student;
+    private int numberOfSlot;
 
     public Subject() {
     }
 
-    public Subject(String subjectCode, String subjectName, Double progressTest1, Double progressTest2, Double projectSubject, boolean status, Student student) {
+    public Subject(String subjectCode, String subjectName, int numberOfSlot) {
         this.subjectCode = subjectCode;
         this.subjectName = subjectName;
-        this.progressTest1 = progressTest1;
-        this.progressTest2 = progressTest2;
-        this.projectSubject = projectSubject;
-        this.status = status;
-        this.student = student;
+        this.numberOfSlot = numberOfSlot;
     }
 
     public String getSubjectCode() {
@@ -38,44 +33,12 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public Double getProgressTest1() {
-        return progressTest1;
+    public int getNumberOfSlot() {
+        return numberOfSlot;
     }
 
-    public void setProgressTest1(Double progressTest1) {
-        this.progressTest1 = progressTest1;
-    }
-
-    public Double getProgressTest2() {
-        return progressTest2;
-    }
-
-    public void setProgressTest2(Double progressTest2) {
-        this.progressTest2 = progressTest2;
-    }
-
-    public Double getProjectSubject() {
-        return projectSubject;
-    }
-
-    public void setProjectSubject(Double projectSubject) {
-        this.projectSubject = projectSubject;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setNumberOfSlot(int numberOfSlot) {
+        this.numberOfSlot = numberOfSlot;
     }
 
     @Override
@@ -83,11 +46,7 @@ public class Subject {
         return "Subject{" +
                 "subjectCode='" + subjectCode + '\'' +
                 ", subjectName='" + subjectName + '\'' +
-                ", progressTest1=" + progressTest1 +
-                ", progressTest2=" + progressTest2 +
-                ", projectSubject=" + projectSubject +
-                ", status=" + status +
-                ", student=" + student +
+                ", numberOfSlot=" + numberOfSlot +
                 '}';
     }
 }

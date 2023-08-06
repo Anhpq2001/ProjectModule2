@@ -1,6 +1,9 @@
 package Model;
 
-public class Admin{
+import java.io.Serializable;
+
+public class Admin implements Serializable {
+    private static final long serialVersionUID = 1l;
     private String adminEmail = "admin@fpt.edu.vn";
     private String adminPasswork = "1234567890";
 

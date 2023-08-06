@@ -1,6 +1,9 @@
 package Model;
 
-public class Student{
+import java.io.Serializable;
+
+public class Student implements Serializable {
+    private static final long serialVersionUID = 1l;
     private String studentCode;
     private String studentName;
     private int studentAge;
@@ -8,13 +11,12 @@ public class Student{
     private String studentPhone;
     private String studentAddress;
     private String studentPassword;
-    private String studentGroup;
     private String schoolYear;
 
     public Student() {
     }
 
-    public Student(String studentCode, String studentName, int studentAge, String studentEmail, String studentPhone, String studentAddress, String studentPassword, String studentGroup, String schoolYear) {
+    public Student(String studentCode, String studentName, int studentAge, String studentEmail, String studentPhone, String studentAddress, String studentPassword, String schoolYear) {
         this.studentCode = studentCode;
         this.studentName = studentName;
         this.studentAge = studentAge;
@@ -22,7 +24,6 @@ public class Student{
         this.studentPhone = studentPhone;
         this.studentAddress = studentAddress;
         this.studentPassword = studentPassword;
-        this.studentGroup = studentGroup;
         this.schoolYear = schoolYear;
     }
 
@@ -82,14 +83,6 @@ public class Student{
         this.studentPassword = studentPassword;
     }
 
-    public String getStudentGroup() {
-        return studentGroup;
-    }
-
-    public void setStudentGroup(String studentGroup) {
-        this.studentGroup = studentGroup;
-    }
-
     public String getSchoolYear() {
         return schoolYear;
     }
@@ -100,16 +93,6 @@ public class Student{
 
     @Override
     public String toString() {
-        return "Student{" +
-                "studentCode='" + studentCode + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", studentAge=" + studentAge +
-                ", studentEmail='" + studentEmail + '\'' +
-                ", studentPhone='" + studentPhone + '\'' +
-                ", studentAddress='" + studentAddress + '\'' +
-                ", studentPassword='" + studentPassword + '\'' +
-                ", studentGroup='" + studentGroup + '\'' +
-                ", schoolYear='" + schoolYear + '\'' +
-                '}';
+        return String.format("%-15s%-25s%-15d%-30s%-15s%-15s%-15s%-15s", this.studentCode, this.studentName, this.studentAge, this.studentEmail, this.studentPhone, this.studentAddress, this.studentPassword, this.schoolYear);
     }
 }
