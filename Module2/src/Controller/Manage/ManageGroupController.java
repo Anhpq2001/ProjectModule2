@@ -53,16 +53,11 @@ public class ManageGroupController implements FileIO<Group>, IFunction<Group> {
 
     @Override
     public void removeItem(String index) {
-        /*Student s = manageAdminController.getStudent(index);
+        Student s = manageAdminController.getStudent(index);
         System.out.println("---Cancel group for student---");
         String groupName = findItemID();
         // kiem tra group co ton tai hay khong
         if(!groupName.isEmpty()){
-            for(Group g : groups){
-                if(index.equals(g.getStudentCode())){
-                    groups.remove(g);
-                }
-            }
             for(GroupAttendance groupAttendance : groupAttendances){
                 if(index.equals(groupAttendance.getStudentCode())){
                     groupAttendances.remove(groupAttendance);
@@ -73,9 +68,14 @@ public class ManageGroupController implements FileIO<Group>, IFunction<Group> {
                     groupPoints.remove(groupPoint);
                 }
             }
+            for(Group g : groups){
+                if(index.equals(g.getStudentCode())){
+                    groups.remove(g);
+                }
+            }
         }else{
             System.err.println("Not found group!");
-        }*/
+        }
     }
 
     @Override

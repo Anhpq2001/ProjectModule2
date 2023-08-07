@@ -33,15 +33,15 @@ public class ManageStudentController {
             switch (choice) {
                 case 1:
                     groupAttendances = manageGroupController.readGroupAttendance("src/IO/GroupAttendance");
-                    displayStatusAttendanceBySubject(groupAttendances);
+                    displayStatusAttendanceBySubject(groupAttendances, studentCode);
                     break;
                 case 2:
                     groupPoints = manageGroupController.readGroupPoint("src/IO/GroupPoint");
-                    displayPointBySubject(groupPoints);
+                    displayPointBySubject(groupPoints, studentCode);
                     break;
                 case 3:
                     groups = manageGroupController.read("src/IO/Group");
-                    manageGroupController.displayItem(groups);
+                    displayGroupStuding(groups, studentCode);
                     break;
                 case 4:
                     students = manageAdminController.read("src/IO/Student");
@@ -53,22 +53,31 @@ public class ManageStudentController {
     }
 
     // function to display status attendance by subject
-    public void displayStatusAttendanceBySubject(List<GroupAttendance> groupAttendances){
+    public void displayStatusAttendanceBySubject(List<GroupAttendance> groupAttendances, String studentCode){
         String subjectCode = CheckInputValue.checkString("Subject code:");
         System.out.printf("%-15s%-20s%-20s%-25s%-20s%-15s\n", "Group", "Subject Code","Student Code", "Student Name", "Status Attendance", "Slot");
         for(GroupAttendance groupAttendance : groupAttendances){
-            if(subjectCode.equals(groupAttendance.getSubjectCode())){
+            if(subjectCode.equals(groupAttendance.getSubjectCode()) && studentCode.equals(groupAttendance.getStudentCode())){
                 System.out.println(groupAttendance);
             }
         }
     }
     // function to display point by subject
-    public void displayPointBySubject(List<GroupPoint> groupPoints){
+    public void displayPointBySubject(List<GroupPoint> groupPoints, String studentCode){
         String subjectCode = CheckInputValue.checkString("Subject code:");
         for(GroupPoint groupPoint : groupPoints){
-            if(subjectCode.equals(groupPoint.getSubjectCode())){
+            if(subjectCode.equals(groupPoint.getSubjectCode()) && studentCode.equals(groupPoint.getStudentCode())){
                 System.out.printf("%-15s%-20s%-20s%-25s%-25s%-25s%-25s\n", "Group", "Subject Code","Student Code", "Student Name", "Progress Test 1", "Progress Test 2", "Assigment");
                 System.out.println(groupPoint);
+            }
+        }
+    }
+    // funtion to display group studing
+    public void displayGroupStuding(List<Group> groups, String studentCode){
+        System.out.printf("%-15s%-20s%-25s%-20s%-15s\n", "Group", "Student Code", "Student Name", "Subject Code", "Total Slot");
+        for(Group group : groups){
+            if(studentCode.equals(group.getStudentCode())){
+                System.out.println(group);
             }
         }
     }

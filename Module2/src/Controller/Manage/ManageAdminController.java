@@ -146,9 +146,6 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
             if(group.equals(groupAttendance.getGroup()) && (numberSlot == groupAttendance.getNumberSlot()) && subjectCode.equals(groupAttendance.getSubjectCode())){
                 System.out.print(groupAttendance.getStudentCode() + "     " + groupAttendance.getStudentName() + "     ");
                 groupAttendance.setStatusAttendance(CheckInputValue.getYesNo("yes(Attend)/no(Absent): "));
-            }else{
-                System.err.println("Class don't exist!");
-                break;
             }
         }
     }
@@ -158,14 +155,11 @@ public class ManageAdminController implements FileIO, IFunction<Student> {
         String group = CheckInputValue.checkString("Group:");
         String subjectCode = CheckInputValue.checkString("Subject code:");
         for(GroupPoint groupPoint : groupPoints){
-            if(group.equals(groupPoint.getGroup()) && subjectCode.equals(groupPoint.getSubjectCode())){
-                System.out.print(groupPoint.getStudentCode() + "     " + groupPoint.getStudentName() +"\n");
+            if(group.equals(groupPoint.getGroup()) && subjectCode.equals(groupPoint.getSubjectCode())) {
+                System.out.print(groupPoint.getStudentCode() + "     " + groupPoint.getStudentName() + "\n");
                 groupPoint.setProgressTest1(CheckInputValue.checkDouble("Enter progress test 1 point:", -1, 11));
                 groupPoint.setProgressTest2(CheckInputValue.checkDouble("Enter progress test 2 point:", -1, 11));
                 groupPoint.setAssignment(CheckInputValue.checkDouble("Enter assignment point:", -1, 11));
-            }else{
-                System.err.println("Class don't exist!");
-                break;
             }
         }
     }
